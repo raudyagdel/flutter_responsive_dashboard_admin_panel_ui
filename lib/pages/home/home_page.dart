@@ -4,6 +4,7 @@ import 'package:flutter_dashboard/responsive.dart';
 import 'package:flutter_dashboard/pages/home/widgets/activity_details_card.dart';
 import 'package:flutter_dashboard/pages/home/widgets/bar_graph_card.dart';
 import 'package:flutter_dashboard/pages/home/widgets/line_chart_card.dart';
+import 'package:flutter_dashboard/widgets/recent_files.dart';
 
 class HomePage extends StatelessWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -12,14 +13,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizedBox _height(BuildContext context) => SizedBox(
+    SizedBox height(BuildContext context) => SizedBox(
           height: Responsive.isDesktop(context) ? 30 : 20,
         );
 
     return SizedBox(
-        height: MediaQuery.of(context).size.height,
-        child: SingleChildScrollView(
-            child: Padding(
+      height: MediaQuery.of(context).size.height,
+      child: SingleChildScrollView(
+        child: Padding(
           padding: EdgeInsets.symmetric(
               horizontal: Responsive.isMobile(context) ? 15 : 18),
           child: Column(
@@ -28,15 +29,19 @@ class HomePage extends StatelessWidget {
                 height: Responsive.isMobile(context) ? 5 : 18,
               ),
               Header(scaffoldKey: scaffoldKey),
-              _height(context),
+              height(context),
               const ActivityDetailsCard(),
-              _height(context),
+              height(context),
               LineChartCard(),
-              _height(context),
+              height(context),
               BarGraphCard(),
-              _height(context),
+              height(context),
+              const RecentFiles(),
+              height(context),
             ],
           ),
-        )));
+        ),
+      ),
+    );
   }
 }

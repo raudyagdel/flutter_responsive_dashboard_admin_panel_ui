@@ -9,10 +9,10 @@ class Menu extends StatefulWidget {
   const Menu({super.key, required this.scaffoldKey});
 
   @override
-  _MenuState createState() => _MenuState();
+  MenuState createState() => MenuState();
 }
 
-class _MenuState extends State<Menu> {
+class MenuState extends State<Menu> {
   List<MenuModel> menu = [
     MenuModel(icon: 'assets/svg/home.svg', title: "Dashboard"),
     MenuModel(icon: 'assets/svg/profile.svg', title: "Profile"),
@@ -70,6 +70,7 @@ class _MenuState extends State<Menu> {
                             horizontal: 13, vertical: 7),
                         child: SvgPicture.asset(
                           menu[i].icon,
+                          // ignore: deprecated_member_use
                           color: selected == i ? Colors.black : Colors.grey,
                         ),
                       ),
