@@ -1,6 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dashboard/const.dart';
+import 'package:flutter_dashboard/extensions/theme_extension.dart';
 import 'package:flutter_dashboard/model/recent_file_model.dart';
+import 'package:flutter_dashboard/responsive.dart';
 import 'package:flutter_svg/svg.dart';
 
 class RecentFiles extends StatelessWidget {
@@ -12,16 +16,56 @@ class RecentFiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(defaultPadding),
-      decoration: const BoxDecoration(
-        color: cardBackgroundColor,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
+      decoration: BoxDecoration(
+        color: context.theme.cardColor,
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Summary",
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                "Summary",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              ElevatedButton.icon(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: defaultPadding * 1.5,
+                    vertical: defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
+                  ),
+                ),
+                onPressed: () {},
+                label: const Icon(Icons.download),
+                icon: const Text("Export"),
+              ),
+              // InkWell(
+              //   onTap: () => print("Call Export"),
+              //   child: Row(
+              //     children: [
+              //       Text(
+              //         "Export",
+              //         style: TextStyle(
+              //           fontSize: 14,
+              //           fontWeight: FontWeight.w500,
+              //           color: context.theme.secondaryHeaderColor,
+              //         ),
+              //       ),
+              //       SizedBox(
+              //         height: 24,
+              //         child: Assets.icons.git.svg(
+              //           colorFilter: ColorFilter.mode(
+              //             context.theme.secondaryHeaderColor,
+              //             BlendMode.srcIn,
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+            ],
           ),
           SizedBox(
             width: double.infinity,

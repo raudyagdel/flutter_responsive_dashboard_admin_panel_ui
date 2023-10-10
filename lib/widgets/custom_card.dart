@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dashboard/const.dart';
+import 'package:flutter_dashboard/extensions/theme_extension.dart';
 
 class CustomCard extends StatelessWidget {
   final Widget child;
   final Color? color;
   final EdgeInsetsGeometry? padding;
 
-  const CustomCard({super.key, this.color,this.padding, required this.child});
+  const CustomCard({super.key, this.color, this.padding, required this.child});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,10 +14,10 @@ class CustomCard extends StatelessWidget {
           borderRadius: const BorderRadius.all(
             Radius.circular(8.0),
           ),
-          color: color ?? cardBackgroundColor,
+          color: color ?? context.theme.cardColor,
         ),
         child: Padding(
-          padding:padding?? const EdgeInsets.all(12.0),
+          padding: padding ?? const EdgeInsets.all(12.0),
           child: child,
         ));
   }
